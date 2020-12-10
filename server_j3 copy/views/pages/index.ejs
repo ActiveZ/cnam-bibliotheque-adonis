@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Home</title>
+</head>
+<body>
+    <!-- <h1><%=//title%></h1> -->
+
+    <div>
+        <% if(locals.query) { %>
+            <p>Name: <%=name%></p>
+            <p>Age: <%=age%></p>
+            <% if(age>18) { %>
+                <p>adulte</p>
+            <% } else {%>
+            <p>pas majeur</p>
+            <% } %>
+        <% } %>
+     </div>
+     
+     <!-- <form action="/" method="get">
+        <label for="name">Name</label>
+        <input type="text" id="name"><br>
+
+        <label for="age">Age</label>
+        <input type="text" id="age"><br>
+        <input type="submit" value="envoyer">
+    </form> -->
+
+    <!-- <form action="/" method="post">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name"><br>
+
+        <label for="age">Age</label>
+        <input type="text" name="age" id="age"><br>
+        <input type="submit" value="envoyer">
+    </form> -->
+
+    <form action="/" method="post">
+        <label for="message">message</label>
+        <textarea name="message" id="message" cols="30" rows="10"></textarea>
+        <input type="submit" value="envoyer">
+    </form>
+    
+    <% if(locals.post) { %>
+        <p>
+            <%= post.name %>
+        </p>
+        <p>
+            <%= post.age %> 
+        </p>
+    <% } %>
+</body>
+</html>
