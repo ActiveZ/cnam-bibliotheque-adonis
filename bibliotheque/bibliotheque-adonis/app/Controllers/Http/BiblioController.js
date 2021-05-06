@@ -1,7 +1,7 @@
 'use strict'
 
 const Bibliothecaire = use("App/Models/Bibliothecaire")
-
+const Database = use('Database') // pour methode avec QueryBuilder
 class BiblioController {
   //////////////////////////// PAGE NOUVEAU BIBLIOTHECAIRE //////////////////////////////////////
 
@@ -28,11 +28,17 @@ class BiblioController {
       biblio.prenom = post.prenom
       biblio.login = post.login
       biblio.password = post.password
-      await biblio.save() // pas moyen de récupérer le résultat de l'enrengistrement ? (pour l'id)
-      const newBiblio = await Bibliothecaire.findBy('login', biblio.login)
-      console.log("new biblio", newBiblio.toJSON())
-      session.put('idBiblio', newBiblio.id)
-
+      // await biblio.save() // ne permet pas de récupérer l'id de l'enregistrement
+      // méthode avec QueryBuilder pour récupérer l'id de l'enregistrement
+      const newId = await Database
+      .table('bibliothecaires')
+      .insert({
+        nom:biblio.nom,
+        prenom:biblio.prenom,
+        login:biblio.login,
+        password:biblio.password,
+        })
+      session.put('idBiblio', newId)
     } catch (error) {
       console.log("error record biblio", error)
     }

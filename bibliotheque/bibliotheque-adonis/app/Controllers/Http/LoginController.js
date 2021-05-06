@@ -31,7 +31,6 @@ class LoginController {
 
   // page account
   account = async ({request, response, session, view}) => {
-    console.log("id biblio", session.get("idBiblio"))
     const biblio = await Bibliothecaire.find(session.get("idBiblio",1))
     const books = await Livre.all()
     const adherents = await Adherent.all()

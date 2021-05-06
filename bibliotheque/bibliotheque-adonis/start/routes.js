@@ -25,7 +25,6 @@ Route.post('/login', 'LoginController.login')
 Route.post('/logout', 'LoginController.logout')
 
 
-// Route.get('/biblio', 'BiblioController.index')
 // ajout d'un bibliothécaire
 Route.get('/inscription', 'BiblioController.index')
 Route.post('/inscription', 'BiblioController.inscription')
