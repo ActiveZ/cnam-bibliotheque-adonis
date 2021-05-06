@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/inscription.css">
+    <title>Inscription adhérent</title>
+</head>
+<body>
+    <div class="divTitre">
+        <h1>ESPACE ADHERENT</h1>
+    </div>
+    <form method="post" action="/inscription">
+        <label for="nom" >Nom<span>*</span></label>
+        <input type='text' name= "nom"  placeholder="Nom">
+
+        <label for="prenom">Prénom<span>*</span></label>
+        <input type="text" name="prenom" id="prenom" placeholder="Prénom">
+
+        <label for="login">Pseudo<span>*</span></label>
+        <input type="text" name="login" id="login" placeholder="Pseudo">
+        
+        <label for="pwd">Mot de passe<span>*</span></label>
+        <input type="password" name="password" id='pwd'placeholder="Mot de passe">
+
+        <button class="btRegister" type="submit">Enregistrer</button>
+    </form>
+</body>
+</html>

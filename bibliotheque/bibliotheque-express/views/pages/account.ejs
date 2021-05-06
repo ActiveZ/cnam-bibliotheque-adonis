@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/account.css">
+    <title>Mon Compte</title>
+</head>
+
+<body>
+    <h1>Mon compte</h1>
+    <p>Nom: <%= user.nom %>
+    </p>
+    <p>Prénom: <%= user.prenom %>
+    </p>
+    <p>Inscrit: <%= user.inscrit %>
+    </p>
+
+    <!-- table mes livres -->
+    <div class="divForm">
+        <h3>MES LIVRES EMPRUNTES</h3>
+    </div>
+    <table>
+        <tr>
+            <th>Titre</th>
+            <th>Auteur</th>
+            <th>ISBN</th>
+            <th>Date prêt</th>
+            <th>Date retour</th>
+            <th></th>
+        </tr>
+
+        <% for (var i=0; i < myBooks.length; i++) { %>
+            <tr>
+                <td>
+                    <%= myBooks[i].titre %>
+                </td>
+                <td>
+                    <%= myBooks[i].auteur %>
+                </td>
+                <td>
+                    <%= myBooks[i].isbn %>
+                </td>
+                <td>
+                    <%= myBooks[i].datePret %>
+                </td>
+                <td>
+                    <%= myBooks[i].dateRetour %>
+                </td>
+                <td class="caseBt"><a class="btn btn-success btn-block"
+                        href="/rendre?idBook=<%= myBooks[i].id%>">Rendre</a></td>
+            </tr>
+            <% } %>
+    </table>
+
+    <!-- table livres disponibles -->
+    <div class="divForm">
+        <h3>LIVRES DISPONIBLES</h3>
+    </div>
+    <table>
+        <tr>
+            <th>Titre</th>
+            <th>Auteur</th>
+            <th>ISBN</th>
+            <th>Date prêt</th>
+            <th>Date retour</th>
+        </tr>
+
+        <% for (var i=0; i < freeBooks.length; i++) { %>
+            <tr>
+                <td>
+                    <%= freeBooks[i].titre %>
+                </td>
+                <td>
+                    <%= freeBooks[i].auteur %>
+                </td>
+                <td>
+                    <%= freeBooks[i].isbn %>
+                </td>
+                <td>
+                    <%= freeBooks[i].datePret %>
+                </td>
+                <td>
+                    <%= freeBooks[i].dateRetour %>
+                </td>
+                <td class="caseBt"><a class="btn btn-success btn-block"
+                        href="/emprunter?idBook=<%=freeBooks[i].id%>&idUser=<%=user.id%>">Emprunter</a></td>
+
+            </tr>
+            <% } %>
+    </table>
+
+    <!-- bt déconnexion -->
+    <div class="divForm">
+        <form action="/logout" method="post">
+            <button class="btn btn-primary btn-block" type="submit">Déconnexion</button>
+        </form>
+    </div>
+</body>
+
+</html>

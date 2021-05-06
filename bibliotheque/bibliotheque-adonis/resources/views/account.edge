@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/account.css">
+    <title>Compte bibliothécaire</title>
+</head>
+
+<body>
+    <h1>Compte bibliothécaire</h1>
+    <p>Nom: {{ biblio.nom }}</p>
+    <p>Prénom: {{ biblio.prenom }}</p>
+
+    <!-- table des livres -->
+    <div class="divForm">
+        <h3>LIVRES DE LA BIBLIOTHEQUE</h3>
+    </div>
+    <table>
+        <tr>
+            <th>Titre</th>
+            <th>Auteur</th>
+            <th>ISBN</th>
+            <th></th>
+        </tr>
+
+        @each(book in books)
+        <tr>
+            <td>
+                {{ book.titre }}
+            </td>
+            <td>
+                {{ book.auteur }}
+            </td>
+            <td>
+                {{ book.isbn }}
+            </td>
+            <td class="caseBt"><a class="btn btn-danger btn-block" href="/deleteBook/{{ book.id }}">Supprimer</a></td>
+        </tr>
+        @endeach
+        <tr>
+            <form action="/addBook" method="POST">
+                {{ csrfField() }}
+                <td><input type="text" name="titre" placeholder="titre"></td>
+                <td><input type="text" name="auteur" placeholder="auteur"></td>
+                <td><input type="text" name="isbn" placeholder="ISBN"></td>
+                <td class="caseBt"><button class="btn btn-success btn-block" type="submit">Ajouter</button></td>
+            </form>
+        </tr>
+    </table>
+
+    <!-- table des adhérents -->
+    <div class="divForm">
+        <h3>LISTE DES ADHERENTS</h3>
+    </div>
+    <table>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Est inscrit</th>
+            <th></th>
+        </tr>
+
+        @each(adherent in adherents)
+        <tr>
+            <td>
+                {{ adherent.nom }}
+            </td>
+            <td>
+                {{ adherent.prenom }}
+            </td>
+            <td>
+                {{ adherent.inscrit }}
+            </td>
+
+            <td class="caseBt"><a class="btn btn-success btn-block"
+                    href="/inscrit/{{ adherent.id }}">Inscrire/Désinscrire</a></td>
+        </tr>
+        @endeach
+    </table>
+
+    <!-- bt déconnexion -->
+    <div class="divForm">
+        <form action="/logout" method="post">
+            {{ csrfField() }}
+            <button class="btn btn-primary btn-block" type="submit">Déconnexion</button>
+        </form>
+    </div>
+</body>
+
+</html>

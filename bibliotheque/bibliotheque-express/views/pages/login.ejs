@@ -1,0 +1,28 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+    <div class="login-dark">
+        <div class="divTitre">
+            <h1>ESPACE ADHERENT</h1>
+        </div>
+        <form method="POST" action="/login" >
+            <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
+            <div class="form-group"><input class="form-control" type="text" name="login" placeholder="Login"></div>
+            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
+            <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Se connecter</button></div>
+            <a class="forgot" href="#">Pseudo ou mot de passe oublié ?</a>
+            <div class="form-group btn-register"><a class="btn btn-warning btn-block" href="/inscription">S'inscrire</a></div>
+        </form>
+    </div>
+
+</body>
+
+</html>
